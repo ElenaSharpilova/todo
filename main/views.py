@@ -11,3 +11,12 @@ def second(request):
 
 def third(request):
     return HttpResponse("This is page test3")
+
+def hw_31(request):
+    return render(request, "hw_31.html")
+
+def hw_31_1(request):
+    return render(request, "hw_31_1.html")
+
+def hw_31_2(request):
+    return render(request, "hw_31_2.html")
