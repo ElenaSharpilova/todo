@@ -48,6 +48,14 @@ section{
     width: 100%;
 }
 
+.book_container{
+    padding: 30px 20px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
 .todo_item{
     border: 1px solid gray;
     border-radius: 5px;

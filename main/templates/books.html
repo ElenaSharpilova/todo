@@ -1,13 +1,36 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Books</title>
+    <link rel="stylesheet" href="{% static 'styles/index.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/checkbox.css' %}">
 </head>
 <body>
-    {% for books in books_list %}
-        <h2>{{ books.title }} - {{ books.author }} , {{books.genre }}</h2>
-    {% endfor %}
+    <section>
+
+        <div class="create_container">
+            <form action="{% url 'add-book' %}" method="POST">
+                {% csrf_token %}
+                <input 
+                    class="create_input" 
+                    type="text" 
+                    placeholder="Напишите сюда новую книгу"
+                    name="book_text" 
+                />
+                <button class="create_button">Добавить</button>
+            </form>
+
+            {% for books in books_list %}
+            <div class="todo_item">
+                <h3>{{ books.title }}</h3>
+                <h5>{{ books.author }}</h5>
+                <h4>{{ books.price }}</h4>
+            </div>
+        {% endfor %}
+        
+    </section>
 </body>
 </html>
