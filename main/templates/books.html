@@ -37,9 +37,18 @@
 
             {% for books in books_list %}
             <div class="todo_item">
-                <h3>{{ books.title }}</h3>
-                <h5>{{ books.author }}</h5>
-                <h4>{{ books.price }}</h4>
+                <div class="todo_item_header">
+                    <h4>{{ books.title }}</h4>
+                    <h5>{{ books.author }}</h5>
+                    <h6>{{ books.price }}</h6>
+                </div>
+
+                <div class="todo_item_footer">
+                    <!-- <div class="action_buttons"> -->
+                        <img src="../static/icons/unmarked.png" />
+                        <img src="../static/icons/delete2.png" />
+                    </div>
+                
             </div>
         {% endfor %}
         
