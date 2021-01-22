@@ -49,7 +49,7 @@
                         {% else %}
                             <a href="{% url 'mark-todo' todo.id %}"><img src="{% static './icons/unmarked.png' %}" /></a>
                         {% endif %}
-                        
+
                         <a href="{% url 'delete-todo' todo.id %}"><img src="{% static './icons/delete2.png' %}" /></a>
                     </div>
                 </div>
