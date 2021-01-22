@@ -42,3 +42,8 @@ def add_book(request):
     book = BookShop(title=text, author=avtor, price=cost)
     book.save()
     return redirect(books)
+
+def delete_todo(request, id):
+    todo = ToDo.objects.get(id=id)
+    todo.delete()
+    return redirect(test)
