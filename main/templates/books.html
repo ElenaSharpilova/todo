@@ -29,29 +29,57 @@
                 <input 
                 class="create_input" 
                 type="text" 
+                placeholder="Описание книги"
+                name="book_description" 
+                />
+                <input 
+                class="create_input" 
+                type="text" 
+                placeholder="Год выхода книги"
+                name="book_year"
+                />
+                <input 
+                class="create_input" 
+                type="text" 
                 placeholder="Стоимость книги"
                 name="book_price" 
                 />
                 <button class="create_button">Добавить</button>
             </form>
+        </div>
+
+        <div class="todo_container ">
 
             {% for books in books_list %}
-            <div class="todo_item">
+            <div class="todo_item
+                {% if books.is_favorites %}
+                    marked
+                {% endif %}
+            ">
                 <div class="todo_item_header">
+                    <!-- <label class="checkbox_container"> -->
+                        <!-- <input type="checkbox"/> -->
+                            <!-- <span class="checkmark"></span> -->
+                    <!-- </label> -->
                     <h4>{{ books.title }}</h4>
                     <h5>{{ books.author }}</h5>
                     <h6>{{ books.price }}</h6>
                 </div>
 
                 <div class="todo_item_footer">
-                    <!-- <div class="action_buttons"> -->
-                        <img src="{% static './icons/unmarked.png' %}" />
+                    <div class="action_buttons">
+                    {% if books.is_favorites %}
+                        <a href="{% url 'mark-books' books.id %}"><img src="{% static './icons/marked.png' %}" /></a>
+                    {% else %}
+                        <a href="{% url 'mark-books' books.id %}"><img src="{% static './icons/unmarked.png' %}" /></a>
+                    {% endif %}
+
                         <a href="{% url 'delete-books' books.id %}"><img src="{% static './icons/delete2.png' %}" /></a>
                     </div>
-                
+                </div>
             </div>
         {% endfor %}
-        
+        </div>
     </section>
 </body>
 </html>

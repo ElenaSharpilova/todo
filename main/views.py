@@ -39,7 +39,9 @@ def add_book(request):
     text = form["book_text"]
     avtor = form["book_author"]
     cost = form["book_price"]
-    book = BookShop(title=text, author=avtor, price=cost)
+    opisanie = form ["book_description"]
+    god = form ["book_year"]
+    book = BookShop(title=text, author=avtor, price=cost, description=opisanie, year="book_year")
     book.save()
     return redirect(books)
 
@@ -57,6 +59,12 @@ def mark_todo(request, id):
 def delete_books(request, id):
     book = BookShop.objects.get(id=id)
     book.delete()
+    return redirect(books)
+
+def mark_books(request, id):
+    book = BookShop.objects.get(id=id)
+    book.is_favorites = True
+    book.save()
     return redirect(books)
 
 def close_todo(request, id):
