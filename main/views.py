@@ -56,6 +56,12 @@ def mark_todo(request, id):
     todo.save()
     return redirect(test)
 
+def unmark_todo(request, id):
+    todo = ToDo.objects.get(id=id)
+    todo.is_favorite = False
+    todo.save()
+    return redirect(test)
+
 def delete_books(request, id):
     book = BookShop.objects.get(id=id)
     book.delete()
@@ -66,6 +72,7 @@ def mark_books(request, id):
     book.is_favorites = True
     book.save()
     return redirect(books)
+
 
 def close_todo(request, id):
     todo = ToDo.objects.get(id=id)
