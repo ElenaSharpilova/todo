@@ -72,3 +72,7 @@ def close_todo(request, id):
     todo.is_closed = not todo.is_closed
     todo.save()
     return redirect(test)
+
+def about_book(request, id):
+    book_object = BookShop.objects.get(id=id)
+    return render(request, "books_detail.html", {"book_object": book_object})
